@@ -8,17 +8,17 @@ import kotlin.concurrent.thread
 class Controller() : Manageable {
 
     lateinit var controllerConfigurationModel: ControllerConfigurationModel
-    var controllerState = ControllerState.NOT_RUNNING
+    private var controllerState : ControllerState
     val webApi: WebApi
     var testValue = 1
 
     init {
+        controllerState=ControllerState.NOT_RUNNING
         webApi = WebApi(this).also {
             thread(start = true) {
                 it.startListening()
             }
         }
-        start(ControllerConfigurationModel(arrayOf("")))
     }
 
     override fun start(controllerConfigurationModel: ControllerConfigurationModel) {
