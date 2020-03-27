@@ -18,7 +18,11 @@ class WebApi(controller : Manageable) {
             //controller.start(ControllerConfigurationModel(arrayOf("")))
             controller.stop()
             controller.restart(ControllerConfigurationModel(arrayOf("")))
-            Thread.sleep(4500)
+            controller.stop()
+            controller.stop()
+            controller.stop()
+            controller.stop()
+
 
 
             controller.restart(ControllerConfigurationModel(arrayOf("")))

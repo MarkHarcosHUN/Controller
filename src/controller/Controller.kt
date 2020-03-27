@@ -19,11 +19,12 @@ class Controller() : Manageable {
                 it.startListening()
             }
         }
+        start(ControllerConfigurationModel(arrayOf("")))
     }
 
     override fun start(controllerConfigurationModel: ControllerConfigurationModel) {
         if (controllerState != ControllerState.NOT_RUNNING) throw ControllerException("Cant start: "+controllerState)
-
+        println("Starting gateway...")
         thread(start = true) {
             setup(controllerConfigurationModel)
             startSupervision()
